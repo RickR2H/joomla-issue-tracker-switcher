@@ -8,3 +8,5 @@ It also provides quick links to both sites.
 3. Click "Load unpacked extension" and select the folder
 
 Plugin is now added to Chorme!
+
+![Joomla issue tracker switcher](issue-switcher.gif)
