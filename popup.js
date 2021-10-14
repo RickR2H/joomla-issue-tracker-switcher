@@ -69,6 +69,7 @@ document.addEventListener('DOMContentLoaded', function () {
         alert('No issue ID found! Please visit the Joomla issue tracker!');
       }
     });
+    window.close();
   });
 
   function constructUrl() {
@@ -83,23 +84,22 @@ document.addEventListener('DOMContentLoaded', function () {
     imgHeight.setSelectionRange(0, 99999); /* For mobile devices */
 
     return 'https://source.unsplash.com/random/' + imgWidth.value + 'x' + imgHeight.value;
-}
+  }
 
   // On click #oggleOffcanvas do something
-  document.getElementById('selectUrlLink').onclick = function() {
+  document.getElementById('selectUrlLink').onclick = function () {
 
-      /* Copy the text inside the text field */
-      navigator.clipboard.writeText(constructUrl());
-      document.getElementById("imgWidth").focus();
+    /* Copy the text inside the text field */
+    navigator.clipboard.writeText(constructUrl());
+    document.getElementById("imgWidth").focus();
 
   }
 
   // On click #oggleOffcanvas do something
-  document.getElementById('gotoUrlLink').onclick = function() {
+  document.getElementById('gotoUrlLink').onclick = function () {
 
-      /* Goto URL */
-      window.open(constructUrl(), '_blank', 'toolbar=0,location=0,menubar=0');
-
+    /* Goto URL */
+    window.open(constructUrl(), '_blank', 'toolbar=0,location=0,menubar=0');
+    window.close();
   }
-
 }, false);
