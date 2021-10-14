@@ -1,0 +1,12 @@
+body {
+    font-size: 14px;
+}
+
+.wrapper {
+    width: 450px;
+}
+
+svg {
+    height: 1rem;
+    transform: translateY(-.1rem);
+}

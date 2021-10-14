@@ -1,0 +1,18 @@
+{
+    "manifest_version": 2,
+
+    "name": "Joomla Issue Switcher",
+    "description": "Switch between the current Joomla issue and the Github issue tracker",
+    "version": "1.0",
+    "icons": {
+        "128": "icon_128.png"
+    },
+    "browser_action": {
+        "default_icon": "icon.png",
+        "default_popup": "popup.html"
+    },
+    "permissions": [
+        "activeTab",
+        "tabs"
+    ]
+}
