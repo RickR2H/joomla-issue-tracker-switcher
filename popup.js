@@ -3,16 +3,32 @@ document.addEventListener('DOMContentLoaded', function () {
 
   let checkPageButton = document.getElementById('toggle-issues');
 
+  const validUrls = [
+    'https://issues.joomla.org/tracker/joomla-cms/',
+    'https://github.com/joomla/joomla-cms/pull/',
+    'https://github.com/joomla/joomla-cms/issues/'
+  ];
+
   chrome.tabs.query({
     currentWindow: true,
     active: true
   }, function (tabs) {
 
     let tablink = tabs[0].url;
+    let checkUrl = false;
 
-    if (tablink.indexOf('joomla') == -1) {
+    validUrls.forEach((item, index)=>{
+
+      if (tablink.indexOf(item) !== -1) {
+        checkUrl = true
+      }
+    })
+
+    if (checkUrl == false) {
       checkPageButton.classList.add('d-none');
+      document.getElementById('message').innerHTML = '<div class="alert alert-warning p-1 text-center" role="alert">No issue ID fount in URL</div>';
     }
+
     return;
   })
 
@@ -72,10 +88,13 @@ document.addEventListener('DOMContentLoaded', function () {
     window.close();
   });
 
-  function constructUrl() {
+  let imgWidth = document.getElementById('imgWidth');
+  let imgHeight = document.getElementById('imgHeight');
+  let searchTermValue = document.getElementById('searchTerm');
+  let presetSize = document.getElementById('presetSize');
+  let searchTerm = 'nature,woods';
 
-    let imgWidth = document.getElementById('imgWidth');
-    let imgHeight = document.getElementById('imgHeight');
+  function constructUrl() {
 
     imgWidth.select();
     imgWidth.setSelectionRange(0, 99999); /* For mobile devices */
@@ -83,7 +102,20 @@ document.addEventListener('DOMContentLoaded', function () {
     imgHeight.select();
     imgHeight.setSelectionRange(0, 99999); /* For mobile devices */
 
-    return 'https://source.unsplash.com/random/' + imgWidth.value + 'x' + imgHeight.value;
+    if (searchTermValue.value) {
+      searchTerm = searchTermValue.value;
+      searchTermValue.value = 'nature,woods';
+    }
+
+    return 'https://source.unsplash.com/' + imgWidth.value + 'x' + imgHeight.value + '?' + searchTerm;
+  }
+
+  presetSize.onchange = function(){
+
+    let whValues = this.value.split('x');
+
+    imgWidth.value = whValues[0];
+    imgHeight.value = whValues[1];
   }
 
   // On click #oggleOffcanvas do something
@@ -92,7 +124,6 @@ document.addEventListener('DOMContentLoaded', function () {
     /* Copy the text inside the text field */
     navigator.clipboard.writeText(constructUrl());
     document.getElementById("imgWidth").focus();
-
   }
 
   // On click #oggleOffcanvas do something
