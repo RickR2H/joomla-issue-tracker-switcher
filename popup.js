@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
     let tablink = tabs[0].url;
     let checkUrl = false;
 
-    validUrls.forEach((item, index)=>{
+    validUrls.forEach((item, index) => {
 
       if (tablink.indexOf(item) !== -1) {
         checkUrl = true
@@ -102,15 +102,10 @@ document.addEventListener('DOMContentLoaded', function () {
     imgHeight.select();
     imgHeight.setSelectionRange(0, 99999); /* For mobile devices */
 
-    if (searchTermValue.value) {
-      searchTerm = searchTermValue.value;
-      searchTermValue.value = 'nature,woods';
-    }
-
-    return 'https://source.unsplash.com/' + imgWidth.value + 'x' + imgHeight.value + '?' + searchTerm;
+    return 'https://picsum.photos/' + imgWidth.value + '/' + imgHeight.value;
   }
 
-  presetSize.onchange = function(){
+  presetSize.onchange = function () {
 
     let whValues = this.value.split('x');
 
