@@ -1,9 +1,8 @@
 {
     "manifest_version": 3,
-
     "name": "Joomla Issue Switcher",
     "description": "Switch between the current Joomla issue and the Github issue tracker",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "icons": {
         "16": "icon_16.png",
         "32": "icon_32.png",
